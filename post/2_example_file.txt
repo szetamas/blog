@@ -1,0 +1,9 @@
+	<h1 class="font-weight-bold">Example_2 heading</h1>
+			<p>
+				First paragraph.
+			</p>
+			<p>
+				Second paragraph.
+			</p>
+			<div class="float-left"><a class="font-weight-bold" name="back" href="/../index.html">Back</a></div><div class="float-right">Another date</div>
+			
