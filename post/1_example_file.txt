@@ -5,5 +5,5 @@
 			<p>
 				Second paragraph.
 			</p>
-			<div class="float-left"><a class="font-weight-bold" name="back" href="/../index.html">Back</a></div><div class="float-right">Date</div>
+			<div class="float-left"><a class="font-weight-bold" href="/../index.html">Back</a></div><div class="float-right">Date</div>
 			
