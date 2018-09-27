@@ -1,32 +1,26 @@
-﻿<?php
-$db=$_GET["db"];		//get it values
-$zar=$_GET["zar"];		//i catch it datas
-$atr=$_GET["atr"];		//and atribute
-$val=$_GET["val"];		//and his value
-if($atr=='0' || $val=='0')		//if atr and val is zero(they weren't in fucntion call)
-{
-	$fullatr="";		//empty string
-}
-else
-{
-	$fullatr=$atr.'="'.$val.'"';		//i create a html atribute
-}
-$dirtxt=glob("*.txt");		//list all txt into the dirtxt
-if($db<1)		//if db (cikdb) less than 1 (0, -1 etc)
-{
-	$db=sizeof($dirtxt);	//then I need ALL txt
-}
-for($cv=sizeof($dirtxt)-1;$cv>=sizeof($dirtxt)-$db && $cv>=0;$cv--)
-{
+<?php
+	$db=$_GET["db"];		//get piece of posts
+	$zar=$_GET["zar"];		//last element of reading
+
+	$dirtxt=glob("*.txt");		//list all txt into the dirtxt
+
+	if($db<0)		//if db (cikdb) less than 0 (-1,-2 etc(negative nums))
+	{
+		$db=sizeof($dirtxt);	//then I need ALL txt
+	}
+
+	for($cv=sizeof($dirtxt)-1;$cv>=sizeof($dirtxt)-$db && $cv>=0;$cv--)
+	{
 		//loop from last element to fisrt element(or db piece) (reverse)
 		$namewof=substr($dirtxt[$cv],0,strpos($dirtxt[$cv],".txt"));		//name WithOut Format(txt)
-		$str1='<a '.$fullatr.' href="/post/post.php?name='.$namewof.'">';	//i create <a> tag and put in to the text with GET value and etc
+		$str1="<a href=\"/post/post.php?name=$namewof\">";	//i create <a> tag and put in to the href atr with GET value
 		$filread=fopen($dirtxt[$cv],"r");		//open read (filepointer at the beginning)
 		$strpuf=fread($filread,filesize($dirtxt[$cv]));		//read txt
 		fclose($filread);	//close file
-		$str1.=substr($strpuf,0,(strpos($strpuf,$zar)+strlen($zar)));
+
 		//put in the output string, the txt selected piece(from zero char to the selected html tag(example:</p>))(+ the last html tag size)
+		$str1.=substr($strpuf,0,(strpos($strpuf,$zar)+strlen($zar)));
 		$str1.="</a>";		//close <a> tag
 		echo $str1;		//write out the string
-}
+	}
 ?>
