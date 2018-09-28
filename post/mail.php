@@ -16,7 +16,7 @@
 		//max length of a line is 70
 		$textarea=wordwrap($textarea,70);
 
-		if(mail("tisztalap@protonmail.com","Feedback","$textarea\nFeladó: $input"))
+		if(mail("tisztalap@protonmail.com","Feedback","$textarea \nFeladó: $input"))
 		{
 			//if it is not false write that thankyou
 			echo "Köszönjük a visszajelzését :)";
